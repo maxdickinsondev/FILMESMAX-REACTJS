@@ -1,11 +1,18 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
     display: flex;
     justify-content: space-between;
+    padding-bottom: 100px;
 `;
 
 export const LeftHeader = styled.header`
+    display: flex;
+    align-items: center;
+`;
+
+export const HomeLogo = styled(Link)`
     display: flex;
     align-items: center;
 `;
@@ -29,6 +36,10 @@ export const InputMovie = styled.input`
 export const RightHeader = styled.header`
     display: flex;
     align-items: center;
+`;
+
+export const GitHub = styled.a`
+    
 `;
 
 export const ButtonSign = styled.button`

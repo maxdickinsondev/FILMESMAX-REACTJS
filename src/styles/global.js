@@ -12,8 +12,9 @@ export default createGlobalStyle`
     }
 
     body {
-        background: url(${background}) no-repeat center 15%;
+        background: url(${background}) no-repeat center;
         background-size: cover;
+        background-attachment: fixed;
     }
 
     body, input, button {

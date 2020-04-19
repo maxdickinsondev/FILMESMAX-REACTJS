@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import { GoDeviceCameraVideo } from 'react-icons/go';
 import { FaGithub } from 'react-icons/fa';
 
-import { Container, LeftHeader, AppName, InputMovie, RightHeader, ButtonSign, ButtonSignText} from './styles';
+import { Container, LeftHeader, AppName, InputMovie, 
+    RightHeader, ButtonSign, ButtonSignText, HomeLogo,
+    GitHub
+} from './styles';
 
 export default class Header extends Component {
     render() {
         return (
             <Container>
                 <LeftHeader>
-                    <GoDeviceCameraVideo  size={45} color="#ffff00" />
-
-                    <AppName>FilmesMax</AppName>
+                    <HomeLogo to="/">
+                        <GoDeviceCameraVideo size={45} color="#ffff00" />
+                        <AppName>FilmesMax</AppName>
+                    </HomeLogo>
     
                     <InputMovie 
                         placeholder="Search by movie title"
@@ -19,8 +23,10 @@ export default class Header extends Component {
                 </LeftHeader>
     
                 <RightHeader>
-                    <FaGithub size={20} color="#fff" />
-
+                    <GitHub href="https://github.com/maxdickinsondev">
+                        <FaGithub size={20} color="#fff" />
+                    </GitHub>
+                    
                     <ButtonSign>
                         <ButtonSignText>Sign in</ButtonSignText>
                     </ButtonSign>
