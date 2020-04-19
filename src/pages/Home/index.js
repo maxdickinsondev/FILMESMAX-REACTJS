@@ -25,8 +25,8 @@ export default class Home extends Component {
 
         return (
           <MovieList>
-            <DetailsMovie to="/details">
-                { movieList.map(movie => (
+            { movieList.map(movie => (
+                <DetailsMovie to={`/details/${movie.id}`}>
                     <li key={movie.id}>
                         <ImageMovie 
                             src={url+movie.poster_path}
@@ -38,8 +38,8 @@ export default class Home extends Component {
                             <Genere>Fantasy</Genere>
                         </div>
                     </li>
-                ))}
-            </DetailsMovie>
+                </DetailsMovie>
+            ))}
           </MovieList>  
         );
     }
