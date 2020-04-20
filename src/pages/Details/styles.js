@@ -45,6 +45,7 @@ export const Description = styled.span`
 export const Genres = styled.span`
     color: #fff;
     margin-left: 20px;
+    font-size: 18px;
 `;
 
 export const OthersInfo = styled.footer`
