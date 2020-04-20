@@ -20,6 +20,7 @@ export default class Details extends Component {
         const response = await api.get(`${match.params.movieinfo}?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR`);
 
         const data = {
+            id: response.data.id,
             title: response.data.original_title,
             description: response.data.overview,
             genres: response.data.genres.name,
@@ -29,7 +30,7 @@ export default class Details extends Component {
             bilhetery: response.data.budget
         };
 
-        console.log(response.data);
+        //console.log(data);
         
         this.setState({
             movieDetails: data,

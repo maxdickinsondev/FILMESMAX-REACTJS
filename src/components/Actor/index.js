@@ -1,19 +1,38 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { ActorList, Header, TextHeader, List, 
     ActorImage, ActorName, ActorNameMovie
 } from './styles';
 
-export default class Actor extends Component {
+class Actor extends Component {
     render() {
         return (
             <>
                 <Header>
-                    <TextHeader> Actors</TextHeader>    
+                    <TextHeader> Actors </TextHeader>    
                 </Header>
-
+    
                 <ActorList>
-                        <List>
+                    <List>
+                        <li>
+                            <ActorImage src="https://image.tmdb.org/t/p/w185/e8CUyxQSE99y5IOfzSLtHC0B0Ch.jpg" />
+                                
+                            <div>
+                                <ActorName> {this.props.actor.title} </ActorName>
+                                <ActorNameMovie> Minerva </ActorNameMovie>
+                            </div>
+                        </li>
+    
+                        <li>
+                                <ActorImage src="https://image.tmdb.org/t/p/w185/e8CUyxQSE99y5IOfzSLtHC0B0Ch.jpg" />
+                                
+                            <div>
+                                <ActorName> Selena Gomez </ActorName>
+                                <ActorNameMovie> Minerva </ActorNameMovie>
+                            </div>
+                        </li>
+    
                             <li>
                                 <ActorImage src="https://image.tmdb.org/t/p/w185/e8CUyxQSE99y5IOfzSLtHC0B0Ch.jpg" />
                                 
@@ -22,7 +41,7 @@ export default class Actor extends Component {
                                     <ActorNameMovie> Minerva </ActorNameMovie>
                                 </div>
                             </li>
-
+    
                             <li>
                                 <ActorImage src="https://image.tmdb.org/t/p/w185/e8CUyxQSE99y5IOfzSLtHC0B0Ch.jpg" />
                                 
@@ -31,7 +50,7 @@ export default class Actor extends Component {
                                     <ActorNameMovie> Minerva </ActorNameMovie>
                                 </div>
                             </li>
-
+    
                             <li>
                                 <ActorImage src="https://image.tmdb.org/t/p/w185/e8CUyxQSE99y5IOfzSLtHC0B0Ch.jpg" />
                                 
@@ -40,7 +59,7 @@ export default class Actor extends Component {
                                     <ActorNameMovie> Minerva </ActorNameMovie>
                                 </div>
                             </li>
-
+    
                             <li>
                                 <ActorImage src="https://image.tmdb.org/t/p/w185/e8CUyxQSE99y5IOfzSLtHC0B0Ch.jpg" />
                                 
@@ -49,52 +68,7 @@ export default class Actor extends Component {
                                     <ActorNameMovie> Minerva </ActorNameMovie>
                                 </div>
                             </li>
-
-                            <li>
-                                <ActorImage src="https://image.tmdb.org/t/p/w185/e8CUyxQSE99y5IOfzSLtHC0B0Ch.jpg" />
-                                
-                                <div>
-                                    <ActorName> Selena Gomez </ActorName>
-                                    <ActorNameMovie> Minerva </ActorNameMovie>
-                                </div>
-                            </li>
-
-                            <li>
-                                <ActorImage src="https://image.tmdb.org/t/p/w185/e8CUyxQSE99y5IOfzSLtHC0B0Ch.jpg" />
-                                
-                                <div>
-                                    <ActorName> Selena Gomez </ActorName>
-                                    <ActorNameMovie> Minerva </ActorNameMovie>
-                                </div>
-                            </li>
-
-                            <li>
-                                <ActorImage src="https://image.tmdb.org/t/p/w185/e8CUyxQSE99y5IOfzSLtHC0B0Ch.jpg" />
-                                
-                                <div>
-                                    <ActorName> Selena Gomez </ActorName>
-                                    <ActorNameMovie> Minerva </ActorNameMovie>
-                                </div>
-                            </li>
-
-                            <li>
-                                <ActorImage src="https://image.tmdb.org/t/p/w185/e8CUyxQSE99y5IOfzSLtHC0B0Ch.jpg" />
-                                
-                                <div>
-                                    <ActorName> Selena Gomez Juanito Torres </ActorName>
-                                    <ActorNameMovie> Minerva </ActorNameMovie>
-                                </div>
-                            </li>
-
-                            <li>
-                                <ActorImage src="https://image.tmdb.org/t/p/w185/e8CUyxQSE99y5IOfzSLtHC0B0Ch.jpg" />
-                                
-                                <div>
-                                    <ActorName> Selena Gomez </ActorName>
-                                    <ActorNameMovie> Minerva </ActorNameMovie>
-                                </div>
-                            </li>
-
+    
                             <li>
                                 <ActorImage src="https://image.tmdb.org/t/p/w185/e8CUyxQSE99y5IOfzSLtHC0B0Ch.jpg" />
                                 
@@ -104,10 +78,14 @@ export default class Actor extends Component {
                                 </div>
                             </li>
                         </List>                   
-                    </ActorList>
-            </>
-
-            
+                </ActorList>
+            </>  
         );
     }
 }
+
+const mapStateToProps = (state) => ({
+    actor: state.actors,
+});
+
+export default connect(mapStateToProps)(Actor);

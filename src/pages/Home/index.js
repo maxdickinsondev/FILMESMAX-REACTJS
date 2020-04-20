@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { MovieList, DetailsMovie, ImageMovie, Title, Genere } from './styles';
 
 import api from '../../services/api';
 
-export default class Home extends Component {
+class Home extends Component {
     state = {
         url: '',
         movieList: []
@@ -20,13 +21,22 @@ export default class Home extends Component {
         });
     }
 
+    handleActor = movie => {
+        const { dispatch } = this.props;
+
+        dispatch({
+            type: '@actor',
+            movie,
+        });
+    }
+
     render() {
         const { movieList, url } = this.state;
 
         return (
           <MovieList>
             { movieList.map(movie => (
-                <DetailsMovie to={`/details/${movie.id}`}>
+                <DetailsMovie to={`/details/${movie.id}`} onClick={() => this.handleActor(movie)}>
                     <li key={movie.id}>
                         <ImageMovie 
                             src={url+movie.poster_path}
@@ -44,3 +54,5 @@ export default class Home extends Component {
         );
     }
 }
+
+export default connect()(Home);
