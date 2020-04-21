@@ -6,6 +6,7 @@ export const ActorList = styled.ul`
     margin-left: 10px;
     margin-right: 10px;
     max-width: 1080px;
+    min-height: 800px;
 
    li {
        display: flex;

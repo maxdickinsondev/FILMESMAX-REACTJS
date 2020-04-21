@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { FaRegMoneyBillAlt, FaRegClock, FaRegCalendarAlt } from 'react-icons/fa';
 
 import api from '../../services/api';
+
 import ActorList from '../../components/Actor';
+import Recomendation from '.././../components/Recomendation';
 
 import { Container, MovieImage, MovieInfo, Title, Description, 
     Info, Genres, OthersInfo, ReleaseData, Duration, Budget,
@@ -88,6 +90,7 @@ export default class Details extends Component {
                 </Container>
 
                 <ActorList />
+                <Recomendation />
             </>
         );  
     }

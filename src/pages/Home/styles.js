@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const MovieList = styled.ul`
@@ -8,6 +8,8 @@ export const MovieList = styled.ul`
 `;
 
 export const DetailsMovie = styled(Link)`
+    animation-delay: transform 0.2s;
+
     li {
         display: flex;
         flex-direction: column;
@@ -20,6 +22,10 @@ export const DetailsMovie = styled(Link)`
             background: #000;
             padding: 20px;
         }
+    }
+
+    &:hover {
+        transform: translateY(-20px);
     }
 `;
 

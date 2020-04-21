@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
@@ -7,11 +7,23 @@ export const Container = styled.div`
     margin-left: 10px;
 `;
 
+export const bounceAnimation = keyframes`
+  from {
+    transform: translateY(20px);
+  }
+
+  to {
+    transform: translateY(-20px)
+  }
+`;
+
 export const MovieImage = styled.img`
-    width: 280px;
+    animation: ${bounceAnimation} 0.9s;
+    width: 280px;  
 `;
 
 export const MovieInfo = styled.div`
+    animation: ${bounceAnimation} 0.9s;
     max-width: 850px;
     max-height: 362px;
     max-width: 800px;
@@ -55,7 +67,7 @@ export const OthersInfo = styled.footer`
     justify-content: space-between;
     background: #000;
     padding: 15px;
-    margin-top: 62px;
+    margin-top: 60px;
 `;
 
 export const ReleaseData = styled.span`
