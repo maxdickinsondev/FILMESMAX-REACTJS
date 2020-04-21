@@ -15,31 +15,15 @@ class Actor extends Component {
 
     async componentDidMount() {
         const { actor } = this.props;
-
+        
         const response = await api.get(`${actor.id}/credits?api_key=14ff7d5e5b5ac073419275359d9759a0`);
 
         const url = 'http://image.tmdb.org/t/p/w300/'
-
-        const data = {
-            nameReal: response.data.cast.map(name => {
-                return name.name
-            }),
-            nameMovie: response.data.cast.map(nameMovie => {
-                return nameMovie.character
-            }),
-            image: response.data.cast.map(profile => {
-                return profile.profile_path
-            }),
-        };
-
-        console.log(data.image);
 
         this.setState({
             actors: response.data.cast,
             urlImage: url
         });
-
-        console.log(response.data);
     }
 
     render() {
@@ -66,7 +50,7 @@ class Actor extends Component {
                                 </div>
                             </li>
                         ))}
-                        </List>                   
+                    </List>                   
                 </ActorList>
             </>  
         );

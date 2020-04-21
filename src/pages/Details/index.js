@@ -31,8 +31,6 @@ export default class Details extends Component {
             img: response.data.poster_path,
             bilhetery: response.data.budget
         };
-
-        //console.log(data);
         
         this.setState({
             movieDetails: data,

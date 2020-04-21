@@ -20,6 +20,9 @@ export const TextHeader = styled.h1`
 `;
 
 export const MovieList = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    
     background: #fff;
     margin-left: 10px;
     max-width: 1080px;
@@ -27,12 +30,9 @@ export const MovieList = styled.div`
 `;
 
 export const DetailsMovie = styled(Link)`
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    min-width: 850px;
-    min-width: 800px;
-    padding: 30px;
 
+    animation-delay: transform 0.2s;
+   
     li {
         display: flex;
         flex-direction: column;
@@ -45,6 +45,10 @@ export const DetailsMovie = styled(Link)`
             min-height: 120px;
             margin-bottom: 30px;
         }
+    }
+
+    &:hover {
+        transform: translateY(-20px);
     }
 `;
 
