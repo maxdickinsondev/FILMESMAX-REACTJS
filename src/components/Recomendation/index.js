@@ -33,8 +33,6 @@ class Recomendation extends Component {
             type: '@actor',
             movie
         });
-
-        window.location.reload();
     }
 
     render() {
@@ -48,7 +46,7 @@ class Recomendation extends Component {
 
                 <MovieList>
                     {recomendation.map(movie => (
-                        <DetailsMovie to={`/details/${movie.id}`} onClick={() => this.handleRecomendation(movie)}>
+                        <DetailsMovie href={`/details/${movie.id}`} onClick={() => this.handleRecomendation(movie)}>
                             <li key={movie.id}>
                                 <ImageMovie src={urlImage+movie.poster_path} />
 

@@ -4,6 +4,8 @@ import background from '../assets/images/bg.jpg';
 
 export default createGlobalStyle`
 
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
     * {
         margin: 0;
         padding: 0;
@@ -15,6 +17,7 @@ export default createGlobalStyle`
         background: url(${background}) no-repeat center;
         background-size: cover;
         background-attachment: fixed;
+        font-family: 'Roboto', cursive;
     }
 
     body, input, button {

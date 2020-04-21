@@ -7,7 +7,7 @@ export const MovieList = styled.ul`
     grid-gap: 25px;  
 `;
 
-export const DetailsMovie = styled(Link)`
+export const DetailsMovie = styled.a`
     animation-delay: transform 0.2s;
 
     li {

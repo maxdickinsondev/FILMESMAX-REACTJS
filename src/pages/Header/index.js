@@ -12,7 +12,7 @@ export default class Header extends Component {
         return (
             <Container>
                 <LeftHeader>
-                    <HomeLogo to="/">
+                    <HomeLogo href="/">
                         <GoDeviceCameraVideo size={45} color="#ffff00" />
                         <AppName>FilmesMax</AppName>
                     </HomeLogo>

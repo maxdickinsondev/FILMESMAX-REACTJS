@@ -29,7 +29,7 @@ export const MovieList = styled.div`
     min-width: 900px;
 `;
 
-export const DetailsMovie = styled(Link)`
+export const DetailsMovie = styled.a`
 
     animation-delay: transform 0.2s;
    

@@ -12,7 +12,7 @@ export const LeftHeader = styled.header`
     align-items: center;
 `;
 
-export const HomeLogo = styled(Link)`
+export const HomeLogo = styled.a`
     display: flex;
     align-items: center;
 `;

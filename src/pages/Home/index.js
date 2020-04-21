@@ -36,7 +36,7 @@ class Home extends Component {
         return (
           <MovieList>
             { movieList.map(movie => (
-                <DetailsMovie to={`/details/${movie.id}`} onClick={() => this.handleActor(movie)}>
+                <DetailsMovie href={`/details/${movie.id}`} onClick={() => this.handleActor(movie)}>
                     <li key={movie.id}>
                         <ImageMovie 
                             src={url+movie.poster_path}
