@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const Container = styled.div`
     display: flex;
     justify-content: space-between;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
 `;
 
 export const LeftHeader = styled.header`
@@ -49,6 +49,11 @@ export const ButtonSign = styled.button`
     border-radius: 4px;
     border: 1px solid #E02041;
     margin-left: 25px;
+    transform: opacity 0.3s;
+
+    &:hover {
+        opacity: 0.7;
+    }
 `;
 
 export const ButtonSignText = styled.span`
