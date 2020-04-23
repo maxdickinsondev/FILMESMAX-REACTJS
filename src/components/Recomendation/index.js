@@ -16,7 +16,7 @@ class Recomendation extends Component {
     async componentDidMount() {
         const { recomen } = this.props
 
-        const response = await api.get(`${recomen.id}/recommendations?api_key=14ff7d5e5b5ac073419275359d9759a0&lanaguage=pt-BR`);
+        const response = await api.get(`/movie/${recomen.id}/recommendations?api_key=14ff7d5e5b5ac073419275359d9759a0&lanaguage=pt-BR`);
 
         const url = 'http://image.tmdb.org/t/p/w185/';
 

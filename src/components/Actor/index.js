@@ -16,7 +16,7 @@ class Actor extends Component {
     async componentDidMount() {
         const { actor } = this.props;
         
-        const response = await api.get(`${actor.id}/credits?api_key=14ff7d5e5b5ac073419275359d9759a0`);
+        const response = await api.get(`/movie/${actor.id}/credits?api_key=14ff7d5e5b5ac073419275359d9759a0`);
 
         const url = 'http://image.tmdb.org/t/p/w300/'
 

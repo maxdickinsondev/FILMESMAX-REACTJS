@@ -19,7 +19,7 @@ export default class Details extends Component {
     async componentDidMount() {
         const { match } = this.props;
 
-        const response = await api.get(`${match.params.movieinfo}?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR`);
+        const response = await api.get(`/movie/${match.params.movieinfo}?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR`);
 
         const data = {
             id: response.data.id,

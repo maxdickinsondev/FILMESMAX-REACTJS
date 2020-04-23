@@ -12,7 +12,7 @@ class Home extends Component {
     };
 
     async componentDidMount() {
-        const response = await api.get(`/now_playing?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR`);
+        const response = await api.get(`/movie/now_playing?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR`);
 
         const url = 'http://image.tmdb.org/t/p/w300';
 

@@ -8,11 +8,18 @@ import api from '../../services/api';
 class Home extends Component {
     state = {
         url: '',
-        movieList: []
+        movieList: [],
+        searchTitle: this.props.title
     };
 
+    handleSearch() {
+        const { title } = this.props;
+
+        console.log(title);
+    }
+
     async componentDidMount() {
-        const response = await api.get(`/popular?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR`);
+        const response = await api.get(`/movie/popular?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR`);
 
         const url = 'http://image.tmdb.org/t/p/w300';
 
@@ -20,6 +27,8 @@ class Home extends Component {
             movieList: response.data.results,
             url: url 
         });
+
+        this.handleSearch();        
     }
 
     handleActor = movie => {
@@ -33,7 +42,7 @@ class Home extends Component {
 
     render() {
         const { movieList, url } = this.state;
-
+        
         return (
             <>
                 <Nav>
@@ -67,4 +76,8 @@ class Home extends Component {
     }
 }
 
-export default connect()(Home);
+const mapStateToProps = state => ({
+    title: state.title
+});  
+
+export default connect(mapStateToProps)(Home);
