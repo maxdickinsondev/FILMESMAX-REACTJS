@@ -9,26 +9,32 @@ class Home extends Component {
     state = {
         url: '',
         movieList: [],
-        searchTitle: this.props.title
+        searchTitle: ''
     };
 
-    handleSearch() {
-        const { title } = this.props;
-
-        console.log(title);
-    }
-
     async componentDidMount() {
-        const response = await api.get(`/movie/popular?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR`);
+        const movie = localStorage.getItem('movie');
+
+        const [search, response] = await Promise.all([
+            api.get(`/search/movie?api_key=14ff7d5e5b5ac073419275359d9759a0&query=${movie}`),
+            api.get(`/movie/popular?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR`)
+        ]);
 
         const url = 'http://image.tmdb.org/t/p/w300';
+        
+        if (movie) {
+            this.setState({ 
+                movieList: search.data.results,
+                url: url
+            });
+        } else {
+            this.setState({
+                movieList: response.data.results,
+                url: url
+            });
+        }
 
-        this.setState({ 
-            movieList: response.data.results,
-            url: url 
-        });
-
-        this.handleSearch();        
+        localStorage.clear();
     }
 
     handleActor = movie => {
@@ -78,6 +84,6 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
     title: state.title
-});  
+});
 
 export default connect(mapStateToProps)(Home);

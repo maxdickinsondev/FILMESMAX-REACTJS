@@ -41,6 +41,20 @@ export const GitHub = styled.a`
     
 `;
 
+export const ButtonSubmit = styled.button`
+    height: 40px;
+    width: 50px;
+    background: #ffff00;
+    border: 1px solid #ffff00;
+    border-radius: 4px;
+    margin-left: 10px;
+    transform: opacity 0.2s;
+
+    &:hover {
+        opacity: 0.7;
+    }
+`;
+
 export const ButtonSign = styled.button`
     height: 35px;
     width: 80px;

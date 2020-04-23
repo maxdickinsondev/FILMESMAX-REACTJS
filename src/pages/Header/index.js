@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GoDeviceCameraVideo } from 'react-icons/go';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaSearch } from 'react-icons/fa';
 
 import { searchMovie } from '../../store/modules/search/actions';
 
 import { Container, LeftHeader, AppName, InputMovie, 
     RightHeader, ButtonSign, ButtonSignText, HomeLogo,
-    GitHub
+    GitHub, ButtonSubmit
 } from './styles';
 
 class Header extends Component {
     state = {
         searchMovie: ''
     };
+
+    componentDidUpdate(_, prevState) {
+        const { searchMovie } = this.state;
+
+        if (prevState.searchMovie != searchMovie) {
+            localStorage.setItem('movie', JSON.stringify(searchMovie));
+        }
+    }
 
     handleSearch = title => {
         const { dispatch } = this.props;
@@ -27,6 +35,10 @@ class Header extends Component {
         this.setState({ searchMovie: e.target.value });
 
         this.handleSearch(searchMovie);
+    }
+
+    handleRefresh() {
+        window.location.reload();
     }
 
     render() {
@@ -45,6 +57,10 @@ class Header extends Component {
                         value={searchMovie}
                         onChange={this.handleInput}
                     />
+
+                    <ButtonSubmit onClick={this.handleRefresh}>
+                        <FaSearch size={25} color="#000" />
+                    </ButtonSubmit>
                 </LeftHeader>
     
                 <RightHeader>
