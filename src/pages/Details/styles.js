@@ -1,10 +1,13 @@
 import styled, { keyframes } from 'styled-components';
 
+export const Background = styled.div`
+    background: url(${props => props.bg ? props.bg : null}) no-repeat center top fixed;
+    max-width: 1100px;
+`;
+
 export const Container = styled.div`
     display: flex;
     flex-direction: row;
-    margin-right: 10px;
-    margin-left: 10px;
 `;
 
 export const bounceAnimation = keyframes`
@@ -27,7 +30,7 @@ export const MovieInfo = styled.div`
     max-width: 850px;
     max-height: 362px;
     max-width: 800px;
-    min-width: 800px;
+    min-width: 820px;
     background: rgba(0, 0, 0, 0.5);
 `;
 

@@ -6,9 +6,7 @@ export const Container = styled.div`
 
 export const Header = styled.header`
     background: #fff;
-    margin-left: 10px;
-    margin-right: 10px;
-    max-width: 1080px;
+    max-width: 1100px;
 `;
 
 export const TextHeader = styled.h1`
@@ -23,8 +21,7 @@ export const MovieList = styled.div`
     grid-template-columns: repeat(4, 1fr);
     
     background: #fff;
-    margin-left: 10px;
-    max-width: 1080px;
+    max-width: 1100px;
     min-width: 900px;
 `;
 

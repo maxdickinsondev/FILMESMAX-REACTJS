@@ -8,6 +8,7 @@ import Recomendation from '.././../components/Recomendation';
 
 import { Container, MovieImage, MovieInfo, Title, Description, 
     Info, Genres, OthersInfo, ReleaseData, Duration, Budget,
+    Background
 } from './styles';
 
 export default class Details extends Component {
@@ -29,6 +30,7 @@ export default class Details extends Component {
             date: response.data.release_date,
             duration: response.data.runtime,
             img: response.data.poster_path,
+            background: response.data.backdrop_path,
             bilhetery: response.data.budget
         };
         
@@ -43,52 +45,54 @@ export default class Details extends Component {
     render() {
         const { movieDetails, genres } = this.state;
 
-        let img = `http://image.tmdb.org/t/p/w300${movieDetails.img}`;
+        let img = `http://image.tmdb.org/t/p/w1280${movieDetails.background}`;
 
         return (
             <>
-                <Container background={img}>
-                    <MovieImage 
-                        src={`http://image.tmdb.org/t/p/w300${movieDetails.img}`}
-                    />
-        
-                    <MovieInfo>
-                        <Info>
-                            <Title> {movieDetails.title} </Title>
-                            <Description> {movieDetails.description} </Description>
-                            <Genres> Genres: { genres } </Genres>
-                        </Info>
-        
-                        <OthersInfo>
-                            <ReleaseData>
-                                <FaRegCalendarAlt 
-                                    size={30}
-                                    style={{ marginRight: '10px' }}
-                                />
-                                Release date: { movieDetails.date } 
-                            </ReleaseData>
+                <Background bg={img}>
+                    <Container>
+                        <MovieImage 
+                            src={`http://image.tmdb.org/t/p/w300${movieDetails.img}`}
+                        />
+            
+                        <MovieInfo>
+                            <Info>
+                                <Title> {movieDetails.title} </Title>
+                                <Description> {movieDetails.description} </Description>
+                                <Genres> Genres: { genres } </Genres>
+                            </Info>
+            
+                            <OthersInfo>
+                                <ReleaseData>
+                                    <FaRegCalendarAlt 
+                                        size={30}
+                                        style={{ marginRight: '10px' }}
+                                    />
+                                    Release date: { movieDetails.date } 
+                                </ReleaseData>
 
-                            <Duration>
-                                <FaRegClock 
-                                    size={30}
-                                    style={{ marginRight: '10px' }} 
-                                />
-                                Duration: { movieDetails.duration } min
-                            </Duration>
+                                <Duration>
+                                    <FaRegClock 
+                                        size={30}
+                                        style={{ marginRight: '10px' }} 
+                                    />
+                                    Duration: { movieDetails.duration } min
+                                </Duration>
 
-                            <Budget> 
-                                <FaRegMoneyBillAlt 
-                                    size={30} 
-                                    style={{ marginRight: '10px' }} 
-                                />
-                                Budget: ${ movieDetails.bilhetery } 
-                            </Budget>
-                            </OthersInfo>
-                    </MovieInfo>
-                </Container>
+                                <Budget> 
+                                    <FaRegMoneyBillAlt 
+                                        size={30} 
+                                        style={{ marginRight: '10px' }} 
+                                    />
+                                    Budget: ${ movieDetails.bilhetery } 
+                                </Budget>
+                                </OthersInfo>
+                        </MovieInfo>
+                    </Container>
 
-                <ActorList />
-                <Recomendation />
+                    <ActorList />
+                    <Recomendation />
+                </Background>
             </>
         );  
     }

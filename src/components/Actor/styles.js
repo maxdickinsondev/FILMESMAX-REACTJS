@@ -3,9 +3,7 @@ import styled from 'styled-components';
 export const ActorList = styled.ul`
 
     background: #fff;
-    margin-left: 10px;
-    margin-right: 10px;
-    max-width: 1080px;
+    max-width: 1100px;
     min-height: 800px;
 
    li {
@@ -52,9 +50,7 @@ export const ActorNameMovie = styled.span`
 
 export const Header = styled.header`
     background: #fff;
-    margin-left: 10px;
-    margin-right: 10px;
-    max-width: 1080px;
+    max-width: 1100px;
 `;
 
 export const TextHeader = styled.h1`
