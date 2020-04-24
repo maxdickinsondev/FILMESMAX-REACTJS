@@ -3,21 +3,29 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { MovieList, DetailsMovie, ImageMovie, Title, Genere, Nav, NavList } from './styles';
 
+import Pagination from '../../components/Pagination';
 import api from '../../services/api';
 
 class Home extends Component {
     state = {
         url: '',
         movieList: [],
-        searchTitle: ''
+        searchTitle: '',
+
+        currentPage: 5,
+        moviesPerPage: 20
     };
 
     async componentDidMount() {
         const movie = localStorage.getItem('movie');
 
+        const page = localStorage.getItem('page');
+
+        const { currentPage } = this.state;
+
         const [search, response] = await Promise.all([
             api.get(`/search/movie?api_key=14ff7d5e5b5ac073419275359d9759a0&query=${movie}`),
-            api.get(`/movie/popular?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR`)
+            api.get(`/movie/popular?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR&page=${page ? page : currentPage}`)
         ]);
 
         const url = 'http://image.tmdb.org/t/p/w300';
@@ -37,6 +45,14 @@ class Home extends Component {
         localStorage.clear();
     }
 
+    componentDidUpdate(_, prevState) {
+        const { currentPage } = this.state;
+
+        if (prevState.currentPage != currentPage) {
+            this.setState({ currentPage });
+        }
+    }
+
     handleActor = movie => {
         const { dispatch } = this.props;
 
@@ -47,8 +63,14 @@ class Home extends Component {
     }
 
     render() {
-        const { movieList, url } = this.state;
-        
+        const { movieList, url, currentPage, moviesPerPage } = this.state;
+
+        const indexOfLastMovie = currentPage * moviesPerPage;
+        const indexOfFirstPost = indexOfLastMovie - moviesPerPage;
+        const currentMovies = movieList.slice(indexOfFirstPost, indexOfLastMovie);
+
+        const totalMovie = [500];
+
         return (
             <>
                 <Nav>
@@ -77,6 +99,11 @@ class Home extends Component {
                         </DetailsMovie>
                     ))}
                 </MovieList> 
+
+                <Pagination 
+                    moviesPerPage={moviesPerPage}
+                    totalMovies={totalMovie}
+                />
             </>
         );
     }

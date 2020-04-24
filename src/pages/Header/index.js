@@ -64,7 +64,7 @@ class Header extends Component {
                 </LeftHeader>
     
                 <RightHeader>
-                    <GitHub href="https://github.com/maxdickinsondev">
+                    <GitHub href="https://github.com/maxdickinsondev" target="_blank">
                         <FaGithub size={20} color="#fff" />
                     </GitHub>
                     

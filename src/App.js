@@ -5,6 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import GlobalStyle from './styles/global';
 import Header from './pages/Header';
+import Footer from './pages/Footer';
 import Routes from './routes';
 
 import { store, persistor } from './store';
@@ -17,6 +18,7 @@ function App() {
           <Header />
           <Routes />
           <GlobalStyle />
+          <Footer />
         </BrowserRouter>
       </PersistGate>
     </Provider>
