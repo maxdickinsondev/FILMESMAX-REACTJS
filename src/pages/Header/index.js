@@ -43,7 +43,6 @@ class Header extends Component {
 
     handleReset() {
         localStorage.setItem('page', 1);
-        localStorage.setItem('numberPages', 1);
         window.location.reload();
     }
 

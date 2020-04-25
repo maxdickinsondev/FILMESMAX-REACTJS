@@ -13,14 +13,12 @@ class Home extends Component {
         searchTitle: '',
 
         currentPage: 1,
-        moviesPerPage: 20,
-        numberPages: 1
     };
 
     async componentDidMount() {
         const movie = localStorage.getItem('movie');
 
-        const page = await localStorage.getItem('page');
+        const page = localStorage.getItem('page');
 
         const { currentPage } = this.state;
 
@@ -39,18 +37,11 @@ class Home extends Component {
         } else {
             this.setState({
                 movieList: response.data.results,
-                numberPages: response.data.total_pages,
                 url: url
             });
         }
 
         //localStorage.clear();
-    }
-
-    componentDidUpdate() {
-        const { numberPages } = this.state;
-
-        localStorage.setItem('numberPages', JSON.stringify(numberPages));
     }
 
     handleActor = movie => {
@@ -62,21 +53,21 @@ class Home extends Component {
         });
     }
 
-    render() {
-        const { movieList, url, currentPage, moviesPerPage } = this.state;
+    handleReset() {
+        localStorage.setItem('page', 1);
+    }
 
-        const indexOfLastMovie = currentPage * moviesPerPage;
-        const indexOfFirstPost = indexOfLastMovie - moviesPerPage;
-        const currentMovies = movieList.slice(indexOfFirstPost, indexOfLastMovie);
+    render() {
+        const { movieList, url } = this.state;
 
         return (
             <>
                 <Nav>
                     <NavList>
-                        <li><Link to="/">Popular</Link></li>
-                        <li><Link to="/nowplaying">Now playing</Link></li>
-                        <li><Link to="/toprated">Top rated</Link></li>
-                        <li><Link to="/upcoming">Up coming</Link></li>
+                        <li><a href="/" onClick={this.handleReset}>Popular</a></li>
+                        <li><a href="/nowplaying" onClick={this.handleReset}>Now playing</a></li>
+                        <li><a href="/toprated" onClick={this.handleReset}>Top rated</a></li>
+                        <li><a href="/upcoming" onClick={this.handleReset}>Up coming</a></li>
                     </NavList>
                 </Nav>
 
@@ -98,9 +89,7 @@ class Home extends Component {
                     ))}
                 </MovieList> 
 
-                <Pagination 
-                    moviesPerPage={moviesPerPage}
-                />
+                <Pagination />
             </>
         );
     }

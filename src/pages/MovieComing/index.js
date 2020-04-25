@@ -12,8 +12,6 @@ class Home extends Component {
         movieList: [],
 
         currentPage: 1,
-        moviesPerPage: 20,
-        numberPages: 1
     };
 
     async componentDidMount() {
@@ -27,15 +25,8 @@ class Home extends Component {
 
         this.setState({ 
             movieList: response.data.results,
-            numberPages: response.data.total_pages,
             url: url 
         });
-    }
-
-    componentDidUpdate() {
-        const { numberPages } = this.state;
-
-        localStorage.setItem('numberPages', JSON.stringify(numberPages));
     }
 
     handleActor = movie => {
@@ -47,17 +38,21 @@ class Home extends Component {
         });
     }
 
+    handleReset() {
+        localStorage.setItem('page', 1);
+    }
+
     render() {
-        const { movieList, url, moviesPerPage } = this.state;
+        const { movieList, url } = this.state;
 
         return (
             <>
                 <Nav>
                     <NavList>
-                        <li><Link to="/">Popular</Link></li>
-                        <li><Link to="/nowplaying">Now playing</Link></li>
-                        <li><Link to="/toprated">Top rated</Link></li>
-                        <li><Link to="/upcoming">Up coming</Link></li>
+                        <li><a href="/" onClick={this.handleReset}>Popular</a></li>
+                        <li><a href="/nowplaying" onClick={this.handleReset}>Now playing</a></li>
+                        <li><a href="/toprated" onClick={this.handleReset}>Top rated</a></li>
+                        <li><a href="/upcoming" onClick={this.handleReset}>Up coming</a></li>
                     </NavList>
                 </Nav>
 
@@ -79,9 +74,7 @@ class Home extends Component {
                     ))}
                 </MovieList>
 
-                <Pagination 
-                    moviesPerPage={moviesPerPage}
-                />
+                <Pagination />
             </>
         );
     }

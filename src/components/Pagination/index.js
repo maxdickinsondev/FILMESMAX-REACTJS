@@ -8,15 +8,16 @@ export default class Pagination extends Component {
         numberPages: [],
     };
 
-    async componentDidMount() {
-        const { moviesPerPage } = this.props;
+    componentDidMount() {
         const numberPages = [];
+        const totalPages = 6;
+        
 
-        let totalPages = await localStorage.getItem('numberPages');
-
-        for (let i = 1; i < Math.ceil(totalPages / moviesPerPage); i++) {
+        for (let i = 1; i < totalPages; i++) {
             numberPages.push(i);
-            this.setState({ numberPages: numberPages });
+            this.setState({ 
+                numberPages: numberPages,
+            });
         }
     }
 
