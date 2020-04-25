@@ -3,23 +3,39 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { MovieList, DetailsMovie, ImageMovie, Title, Genere, Nav, NavList } from './styles';
 
+import Pagination from '../../components/Pagination';
 import api from '../../services/api';
 
 class Home extends Component {
     state = {
         url: '',
-        movieList: []
+        movieList: [],
+
+        currentPage: 1,
+        moviesPerPage: 20,
+        numberPages: 1
     };
 
     async componentDidMount() {
-        const response = await api.get(`/movie/now_playing?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR`);
+        const page = await localStorage.getItem('page');
+
+        const { currentPage } = this.state;
+
+        const response = await api.get(`/movie/now_playing?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR&page=${page ? page : currentPage}`);
 
         const url = 'http://image.tmdb.org/t/p/w300';
 
         this.setState({ 
             movieList: response.data.results,
+            numberPages: response.data.total_pages,
             url: url 
         });
+    }
+
+    componentDidUpdate() {
+        const { numberPages } = this.state;
+
+        localStorage.setItem('numberPages', JSON.stringify(numberPages));
     }
 
     handleActor = movie => {
@@ -32,7 +48,7 @@ class Home extends Component {
     }
 
     render() {
-        const { movieList, url } = this.state;
+        const { movieList, url, moviesPerPage } = this.state;
 
         return (
             <>
@@ -62,6 +78,10 @@ class Home extends Component {
                         </DetailsMovie>
                     ))}
                 </MovieList> 
+
+                <Pagination 
+                    moviesPerPage={moviesPerPage}
+                />
             </>
         );
     }

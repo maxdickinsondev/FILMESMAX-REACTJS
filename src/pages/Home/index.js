@@ -12,14 +12,15 @@ class Home extends Component {
         movieList: [],
         searchTitle: '',
 
-        currentPage: 5,
-        moviesPerPage: 20
+        currentPage: 1,
+        moviesPerPage: 20,
+        numberPages: 1
     };
 
     async componentDidMount() {
         const movie = localStorage.getItem('movie');
 
-        const page = localStorage.getItem('page');
+        const page = await localStorage.getItem('page');
 
         const { currentPage } = this.state;
 
@@ -38,19 +39,18 @@ class Home extends Component {
         } else {
             this.setState({
                 movieList: response.data.results,
+                numberPages: response.data.total_pages,
                 url: url
             });
         }
 
-        localStorage.clear();
+        //localStorage.clear();
     }
 
-    componentDidUpdate(_, prevState) {
-        const { currentPage } = this.state;
+    componentDidUpdate() {
+        const { numberPages } = this.state;
 
-        if (prevState.currentPage != currentPage) {
-            this.setState({ currentPage });
-        }
+        localStorage.setItem('numberPages', JSON.stringify(numberPages));
     }
 
     handleActor = movie => {
@@ -68,8 +68,6 @@ class Home extends Component {
         const indexOfLastMovie = currentPage * moviesPerPage;
         const indexOfFirstPost = indexOfLastMovie - moviesPerPage;
         const currentMovies = movieList.slice(indexOfFirstPost, indexOfLastMovie);
-
-        const totalMovie = [500];
 
         return (
             <>
@@ -102,7 +100,6 @@ class Home extends Component {
 
                 <Pagination 
                     moviesPerPage={moviesPerPage}
-                    totalMovies={totalMovie}
                 />
             </>
         );

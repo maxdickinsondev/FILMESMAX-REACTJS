@@ -41,13 +41,19 @@ class Header extends Component {
         window.location.reload();
     }
 
+    handleReset() {
+        localStorage.setItem('page', 1);
+        localStorage.setItem('numberPages', 1);
+        window.location.reload();
+    }
+
     render() {
         const { searchMovie } = this.state;
 
         return (
             <Container>
                 <LeftHeader>
-                    <HomeLogo href="/">
+                    <HomeLogo href="/" onClick={this.handleReset}>
                         <GoDeviceCameraVideo size={45} color="#ffff00" />
                         <AppName> FilmesMax </AppName>
                     </HomeLogo>
