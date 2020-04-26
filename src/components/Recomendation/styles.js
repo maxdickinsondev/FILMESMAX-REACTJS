@@ -23,6 +23,8 @@ export const MovieList = styled.div`
     background: #fff;
     max-width: 1100px;
     min-width: 900px;
+
+    margin-bottom: 30px;
 `;
 
 export const DetailsMovie = styled.a`

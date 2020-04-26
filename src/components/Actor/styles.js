@@ -4,7 +4,6 @@ export const ActorList = styled.ul`
 
     background: #fff;
     max-width: 1100px;
-    min-height: 800px;
 
    li {
        display: flex;
@@ -49,6 +48,9 @@ export const ActorNameMovie = styled.span`
 `;
 
 export const Header = styled.header`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: #fff;
     max-width: 1100px;
 `;
@@ -58,4 +60,14 @@ export const TextHeader = styled.h1`
     color: #999;
     padding: 20px;
     text-transform: uppercase;
+`;
+
+export const SwitchInfo = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+export const SwitchText = styled.span`
+    margin-right: 20px;
+    margin-left: 10px;
 `;
