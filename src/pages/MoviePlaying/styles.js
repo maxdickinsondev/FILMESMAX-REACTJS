@@ -72,8 +72,3 @@ export const Title = styled.span`
     line-height: 25px;
     margin-bottom: 5px;
 `;
-
-export const Genere = styled.span`
-    color: #eee;
-    line-height: 25px;
-`;

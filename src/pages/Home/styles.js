@@ -49,7 +49,9 @@ export const DetailsMovie = styled.a`
         div {
             display: flex;
             flex-direction: column;
+            align-items: center;
             max-width: 202px;
+            min-width: 202px;
             min-height: 140px;
             background: #000;
             padding: 20px;
@@ -71,9 +73,4 @@ export const Title = styled.span`
     color: #eee;
     line-height: 25px;
     margin-bottom: 5px;
-`;
-
-export const Genere = styled.span`
-    color: #eee;
-    line-height: 25px;
 `;

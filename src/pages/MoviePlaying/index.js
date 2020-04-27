@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { MovieList, DetailsMovie, ImageMovie, Title, Genere, Nav, NavList } from './styles';
+import { MovieList, DetailsMovie, ImageMovie, Title, Nav, NavList } from './styles';
 
 import Pagination from '../../components/Pagination';
 import api from '../../services/api';
@@ -67,7 +66,6 @@ class Home extends Component {
 
                                 <div>
                                     <Title> {movie.title} </Title>
-                                    <Genere>Fantasy</Genere>
                                 </div>
                             </li>
                         </DetailsMovie>

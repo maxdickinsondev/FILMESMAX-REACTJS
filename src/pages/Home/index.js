@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { MovieList, DetailsMovie, ImageMovie, Title, Genere, Nav, NavList } from './styles';
+import { MovieList, DetailsMovie, ImageMovie, Title, Nav, NavList } from './styles';
 
 import Pagination from '../../components/Pagination';
 import api from '../../services/api';
@@ -24,7 +23,7 @@ class Home extends Component {
 
         const [search, response] = await Promise.all([
             api.get(`/search/movie?api_key=14ff7d5e5b5ac073419275359d9759a0&query=${movie}`),
-            api.get(`/movie/popular?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR&page=${page ? page : currentPage}`)
+            api.get(`/movie/popular?api_key=14ff7d5e5b5ac073419275359d9759a0&language=pt-BR&page=${page ? page : currentPage}`),
         ]);
 
         const url = 'http://image.tmdb.org/t/p/w300';
@@ -41,7 +40,7 @@ class Home extends Component {
             });
         }
 
-        //localStorage.clear();
+        localStorage.clear();
     }
 
     handleActor = movie => {
@@ -82,7 +81,6 @@ class Home extends Component {
 
                                 <div>
                                     <Title> {movie.title} </Title>
-                                    <Genere>Fantasy</Genere>
                                 </div>
                             </li>
                         </DetailsMovie>
