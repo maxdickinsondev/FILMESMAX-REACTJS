@@ -1,6 +1,6 @@
 # FilmesMax, versão web
 
-![Sem título12](https://user-images.githubusercontent.com/59968647/78785381-74763c00-797d-11ea-96a0-4a6030277ff2.png)
+![image](https://user-images.githubusercontent.com/59968647/80411354-722f3f80-88a2-11ea-8345-cc4c007b0198.png)
 
 - O **FilmesMax** é uma aplicação desenvolvida para exibir informações de filmes a partir de uma API. Na aplicação é possível selecionar um filme e então é exibido várias informações como descrição, data de lançamento, duração e bilheteria. Também é exibido todos os atores e uma lista de filmes recomendados.
 
