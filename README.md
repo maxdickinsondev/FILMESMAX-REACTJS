@@ -17,3 +17,5 @@
 - Styled Components
 - Axios (para as requisições com a api)
 - API do TheMovieDB
+
+ASSISTA O VÍDEO NO YOUTUBE: https://youtu.be/3DBv2uu3MV8
